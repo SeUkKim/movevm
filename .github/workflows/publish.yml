@@ -2,16 +2,23 @@ name: publish changed files to move-natives on release
 
 on:
   workflow_run:
-    workflows: ["Release rust libmovevm"] # The name of the triggering workflow
+    workflows: ["Release rust libmovevm"]
     types:
       - completed
 
 jobs:
   copy-files:
-    name: copy files to move-natives
+    name: Copy files to move-natives
+    if: startsWith(github.event.workflow_run.head_commit.message, 'refs/tags/') # Ensure it only triggers for tags
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check
+        run: | 
+          echo ${{ github.event.workflow_run.head_commit.id }}
+          echo ${{ github.event.workflow_run.name }}
+          echo ${{ github.event.workflow_run.head_branch }}
+      
       - name: checkout movevm repository
         uses: actions/checkout@v4
 
