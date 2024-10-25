@@ -36,4 +36,4 @@ jobs:
           destination-repo: 'move-natives'
           destination-branch: 'main'
           email: 'infra@initia.xyz'
-          commit-msg: 'bump movevm on release ${{ github.event.workflow_run.head_commit.message }}'
+          commit-msg: 'bump movevm on release ${{ github.event.workflow_run.head_branch }}'
