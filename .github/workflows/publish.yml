@@ -9,7 +9,7 @@ on:
 jobs:
   copy-files:
     name: Copy files to move-natives
-    if: startsWith(github.event.workflow_run.head_commit.message, 'refs/tags/') # Ensure it only triggers for tags
+    if: startsWith(github.event.workflow_run.head_branch, 'v') # Check if the run was triggered by a tag, adjust 'v' if needed
     runs-on: ubuntu-latest
 
     steps:
