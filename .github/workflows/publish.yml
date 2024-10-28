@@ -16,7 +16,6 @@ jobs:
       - name: Check
         run: | 
           echo ${{ github.event.workflow_run.head_commit.id }}
-          echo ${{ github.event.workflow_run.name }}
           echo ${{ github.event.workflow_run.head_branch }}
       
       - name: checkout movevm repository
@@ -36,4 +35,4 @@ jobs:
           destination-repo: 'move-natives'
           destination-branch: 'main'
           email: 'infra@initia.xyz'
-          commit-msg: 'bump movevm on release ${{ github.event.workflow_run.head_branch }}'
+          commit-msg: 'bump movevm ${{ github.event.workflow_run.head_branch }}'
